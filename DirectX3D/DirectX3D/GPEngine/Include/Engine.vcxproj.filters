@@ -52,6 +52,12 @@
     <Filter Include="01. Core\06. Scheduler">
       <UniqueIdentifier>{58e5165c-dd21-43ba-8044-3481bd93a23b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Resources\01. Mesh">
+      <UniqueIdentifier>{aac90cd9-0c1c-48e6-a60a-15b83dc7d2fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Resources\02. Texture">
+      <UniqueIdentifier>{2360c9d3-cdac-47d1-9a97-470d8816d261}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -87,6 +93,30 @@
     <ClInclude Include="Core\Math\Vector3.h">
       <Filter>01. Core\01. Math</Filter>
     </ClInclude>
+    <ClInclude Include="Core\File\PathManager.h">
+      <Filter>01. Core\02. File</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Obj.h">
+      <Filter>01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer\Timer.h">
+      <Filter>01. Core\03. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer\TimerManager.h">
+      <Filter>01. Core\03. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Mesh\Mesh.h">
+      <Filter>03. Resources\01. Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\ResourcesManager.h">
+      <Filter>03. Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Texture\DirectXTex.h">
+      <Filter>03. Resources\02. Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Texture\Sampler.h">
+      <Filter>03. Resources\02. Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -107,5 +137,31 @@
     <ClCompile Include="Core\Math\Matrix.cpp">
       <Filter>01. Core\01. Math</Filter>
     </ClCompile>
+    <ClCompile Include="Core\File\PathManager.cpp">
+      <Filter>01. Core\02. File</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Obj.cpp">
+      <Filter>01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer\Timer.cpp">
+      <Filter>01. Core\03. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer\TimerManager.cpp">
+      <Filter>01. Core\03. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Mesh\Mesh.cpp">
+      <Filter>03. Resources\01. Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\ResourcesManager.cpp">
+      <Filter>03. Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Texture\Sampler.cpp">
+      <Filter>03. Resources\02. Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Texture\DirectXTex.inl">
+      <Filter>03. Resources\02. Texture</Filter>
+    </None>
   </ItemGroup>
 </Project>

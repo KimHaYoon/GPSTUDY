@@ -1,5 +1,7 @@
 #include "Core.h"
 #include "../Device/Device.h"
+#include "Timer/Timer.h"
+#include "Timer/TimerManager.h"
 
 GP_USING
 
@@ -20,6 +22,7 @@ CCore::CCore()
 CCore::~CCore()
 {
 	DESTROY_SINGLE(CDevice);
+	DESTROY_SINGLE(CTimerManager);
 #ifdef _DEBUG
 	FreeConsole();
 #endif // _DEBUG
@@ -49,6 +52,9 @@ bool CCore::Init(HINSTANCE hInst, HWND hWnd, UINT iWidth, UINT iHeight, bool bWi
 	m_hWnd = hWnd;
 
 	if (!GET_SINGLE(CDevice)->Init(m_hWnd, iWidth, iHeight, bWindowMode))
+		return false;
+
+	if (!GET_SINGLE(CTimerManager)->Init())
 		return false;
 
 	return true;
@@ -85,6 +91,21 @@ int CCore::RunTool()
 
 void CCore::Logic()
 {
+	CTimer*	pTimer = GET_SINGLE(CTimerManager)->FindTimer("MainThread");
+
+	pTimer->Update();
+
+	float fTime = pTimer->GetDeltaTime();
+
+	SAFE_RELEASE(pTimer);
+
+	Input(fTime);
+	if(Update(fTime) == 1)
+		return;
+	if(LateUpdate(fTime) == 1)
+		return;
+	Collision(fTime);
+	Render(fTime);
 }
 
 void CCore::Input(float fTime)

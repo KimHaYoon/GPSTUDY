@@ -100,6 +100,7 @@ bool CDevice::Init(HWND hWnd, UINT iWidth, UINT iHeight, bool bWindowMode)
 
 	SAFE_RELEASE(pBackBuffer);
 
+	// 깊이버퍼 : 깊이 정보를 담는 2차원 텍스쳐 
 	// 깊이버퍼용 텍스쳐를 만든다.
 	D3D11_TEXTURE2D_DESC	tDepthDesc = {};
 

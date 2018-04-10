@@ -4,7 +4,7 @@
 
 GP_BEGIN
 
-class CCore
+class GP_DLL CCore
 {
 private:
 	static bool	m_bLoop;

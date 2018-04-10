@@ -161,24 +161,42 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Core\File\PathManager.h" />
     <ClInclude Include="Core\Math\Math.h" />
     <ClInclude Include="Core\Math\Matrix.h" />
     <ClInclude Include="Core\Math\Vector2.h" />
     <ClInclude Include="Core\Math\Vector3.h" />
     <ClInclude Include="Core\Math\Vector4.h" />
+    <ClInclude Include="Core\Obj.h" />
+    <ClInclude Include="Core\Timer\Timer.h" />
+    <ClInclude Include="Core\Timer\TimerManager.h" />
     <ClInclude Include="Device\Device.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineFlag.h" />
     <ClInclude Include="EngineMacro.h" />
     <ClInclude Include="EngineTypes.h" />
+    <ClInclude Include="Resources\Mesh\Mesh.h" />
+    <ClInclude Include="Resources\ResourcesManager.h" />
+    <ClInclude Include="Resources\Texture\DirectXTex.h" />
+    <ClInclude Include="Resources\Texture\Sampler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
+    <ClCompile Include="Core\File\PathManager.cpp" />
     <ClCompile Include="Core\Math\Matrix.cpp" />
     <ClCompile Include="Core\Math\Vector2.cpp" />
     <ClCompile Include="Core\Math\Vector3.cpp" />
     <ClCompile Include="Core\Math\Vector4.cpp" />
+    <ClCompile Include="Core\Obj.cpp" />
+    <ClCompile Include="Core\Timer\Timer.cpp" />
+    <ClCompile Include="Core\Timer\TimerManager.cpp" />
     <ClCompile Include="Device\Device.cpp" />
+    <ClCompile Include="Resources\Mesh\Mesh.cpp" />
+    <ClCompile Include="Resources\ResourcesManager.cpp" />
+    <ClCompile Include="Resources\Texture\Sampler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Texture\DirectXTex.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

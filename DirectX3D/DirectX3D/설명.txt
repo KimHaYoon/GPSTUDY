@@ -1,3 +1,9 @@
+▶ COM(Component Object Model)
+   - DirectX의 프로그래밍언어 독립성과 하위 호환성을 가능하게 하는 기술
+   - COM객체를 흔히 인터페이스라고 부름
+   - COM 인터페이스를 다 사용하고 난 후에는 그 인터페이스의 Release메서드를 호출해 주어야함
+		-> COM객체들이 자신만의 고유한 방식으로 메모리를 관리하기 때문에
+
 ▶ Divece
   1. D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, iFlag, NULL, 0, D3D11_SDK_VERSION, &tDesc, &m_pSwapChain, &m_pDevice, &eLevel, &m_pContext)
 		->장치와 장치 문맥, 교환 사슬을 생성하는 함수
@@ -22,3 +28,14 @@
 		-> pFeatureLevels를 NULL로 했기 때문에 지원되는 가장 높은 기능을 돌려주지만 D3D_FEATURE_LEVEL_11_0로 지정
    - ppImmediateContext : 생성된 장치 문맥을 돌려준다
 		-> m_pContext에 장치 문맥을 돌려받음
+
+▶ 파이프라인(Pipleline)
+  1. 렌더링 파이프라인
+  2. 계산 파이프라인
+
+▶ 정점 버퍼
+   1. 버퍼(Buffer) : GPU가 정점 배열에 접근할 수 있게 정점 배열을 담아두는 특별한 자원
+		-> 버퍼의 인터페이스 : ID3D11Buffer
+		-> Direct3D의 버퍼들은 자료를 담을 뿐만 아니라, CPU나 GPU가 자료에 어떻게 접근할 수 있고 
+		   버퍼가 파이프라인의 어디에 묶이는지에 대한 정보도 가짐
+   2. 정점 버퍼 : 정점들을 담는 버퍼

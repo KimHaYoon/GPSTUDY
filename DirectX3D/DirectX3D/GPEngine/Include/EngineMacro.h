@@ -35,3 +35,8 @@
 #define	DEFINITION_SINGLE(Type)	Type* Type::m_pInst	= NULL;
 #define	GET_SINGLE(Type)		Type::GetInst()
 #define	DESTROY_SINGLE(Type)	Type::DestroyInst()
+
+#define	DEVICE		GET_SINGLE(CDevice)->GetDevice()
+#define	CONTEXT		GET_SINGLE(CDevice)->GetContext()
+#define	SWAPCHAIN	GET_SINGLE(CDevice)->GetSwapChain()
+#define	DEVICE_RESOLUTION	GET_SINGLE(CDevice)->GetResolution()
