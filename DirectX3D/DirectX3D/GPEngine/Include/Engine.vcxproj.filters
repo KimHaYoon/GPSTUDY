@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. Core">
+      <UniqueIdentifier>{9d5fac79-bd67-4319-9bb7-db2fa7fd4a1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Device">
+      <UniqueIdentifier>{47964629-7537-498e-b3cf-00b6a5dcf854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Resources">
+      <UniqueIdentifier>{7ff4f994-d3bc-4eea-bb41-0da857390df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Rendering">
+      <UniqueIdentifier>{5500a4f1-7cb8-4f55-b4ed-799b4762cdc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Scene">
+      <UniqueIdentifier>{c96e65ad-608d-4b36-92c5-78f27a9a631d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. GameObject">
+      <UniqueIdentifier>{56cb1e79-00fa-4c48-a1a6-2b55a72ee70c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component">
+      <UniqueIdentifier>{6d1686dc-f2d7-45bb-8469-57601c405812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\01. Math">
+      <UniqueIdentifier>{3e387ab1-926b-4f37-9614-be0a91f7f894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\02. File">
+      <UniqueIdentifier>{f1fcbc71-fd7d-4934-ae91-536686a61056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\03. Timer">
+      <UniqueIdentifier>{717ae4fa-4b10-4d47-b3f7-740b079132dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\04. Input">
+      <UniqueIdentifier>{b9bb9fb6-4303-4471-8f49-648a9b06a0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\05. CollisionManager">
+      <UniqueIdentifier>{1e4b36ce-c1e3-4a1d-bfa2-a48416a64a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\06. Scheduler">
+      <UniqueIdentifier>{58e5165c-dd21-43ba-8044-3481bd93a23b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineFlag.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMacro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTypes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Core.h">
+      <Filter>01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Device.h">
+      <Filter>02. Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Math\Math.h">
+      <Filter>01. Core\01. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Math\Vector4.h">
+      <Filter>01. Core\01. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Math\Matrix.h">
+      <Filter>01. Core\01. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Math\Vector2.h">
+      <Filter>01. Core\01. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Math\Vector3.h">
+      <Filter>01. Core\01. Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\Core.cpp">
+      <Filter>01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Device.cpp">
+      <Filter>02. Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Vector4.cpp">
+      <Filter>01. Core\01. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Vector3.cpp">
+      <Filter>01. Core\01. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Vector2.cpp">
+      <Filter>01. Core\01. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Matrix.cpp">
+      <Filter>01. Core\01. Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
