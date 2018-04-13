@@ -58,6 +58,12 @@
     <Filter Include="03. Resources\02. Texture">
       <UniqueIdentifier>{2360c9d3-cdac-47d1-9a97-470d8816d261}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Rendering\01. Shader">
+      <UniqueIdentifier>{1353825f-e472-4d20-8d42-8eb9ef96c299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Rendering\01. Shader\01. HLSL">
+      <UniqueIdentifier>{49b55ac9-344a-4eed-9abc-f3c82e753b85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -117,6 +123,15 @@
     <ClInclude Include="Resources\Texture\Sampler.h">
       <Filter>03. Resources\02. Texture</Filter>
     </ClInclude>
+    <ClInclude Include="Resources\Texture\Texture.h">
+      <Filter>03. Resources\02. Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shader\Shader.h">
+      <Filter>04. Rendering\01. Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shader\ShaderManager.h">
+      <Filter>04. Rendering\01. Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -158,10 +173,33 @@
     <ClCompile Include="Resources\Texture\Sampler.cpp">
       <Filter>03. Resources\02. Texture</Filter>
     </ClCompile>
+    <ClCompile Include="Resources\Texture\Texture.cpp">
+      <Filter>03. Resources\02. Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shader\Shader.cpp">
+      <Filter>04. Rendering\01. Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shader\ShaderManager.cpp">
+      <Filter>04. Rendering\01. Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Texture\DirectXTex.inl">
       <Filter>03. Resources\02. Texture</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Bin_Debug\Shader\Share.fx">
+      <Filter>04. Rendering\01. Shader\01. HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin_Debug\Shader\Standard.fx">
+      <Filter>04. Rendering\01. Shader\01. HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin_Debug\Shader\UI.fx">
+      <Filter>04. Rendering\01. Shader\01. HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin_Debug\Shader\Collider.fx">
+      <Filter>04. Rendering\01. Shader\01. HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

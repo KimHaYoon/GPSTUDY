@@ -56,4 +56,84 @@ typedef struct GP_DLL _tagVertexColor
 	}
 }VERTEXCOLOR, *PVERTEXCOLOR;
 
+// Constant Buffer
+typedef struct GP_DLL _tagConstantBuffer
+{
+	int				iRegister;
+	int				iSize;
+	ID3D11Buffer*	pBuffer;
+}CONSTANTBUFFER, *PCONSTANTBUFFER;
+
+typedef struct GP_DLL _tagTransformCBuffer
+{
+	Matrix	matWorld;
+	Matrix	matView;
+	Matrix	matProj;
+	Matrix	matWV;
+	Matrix	matWVP;
+	Matrix	matWP;
+	Vector3	vPivot;
+	float	fEmpty;
+	Vector3	vLength;
+	float	fEmpty1;
+}TRANSFORMCBUFFER, *PTRANSFORMCBUFFER;
+
+typedef struct GP_DLL _tagAnimationClip2D
+{
+	ANIMATION2D_TYPE	eType;
+	ANIMATION2D_OPTION	eOption;
+	class CTexture*		pTexture;
+	int		iFrameX;
+	int		iFrameY;
+	int		iFrameMaxX;
+	int		iFrameMaxY;
+	int		iLengthX;
+	int		iLengthY;
+	int		iStartY;
+	float	fAnimTime;
+	float	fAnimLimitTime;
+	int		iCount;
+	int		iCountLimit;
+	float	fOptionTime;
+	float	fOptionTimeLimit;
+
+	_tagAnimationClip2D() :
+		eType(A2D_ATLAS),
+		eOption(A2DO_LOOP),
+		pTexture(NULL),
+		iFrameX(0),
+		iFrameY(0),
+		iFrameMaxX(1),
+		iFrameMaxY(1),
+		fAnimTime(0.f),
+		fAnimLimitTime(1.f),
+		iCount(0),
+		iCountLimit(0),
+		fOptionTime(0.f),
+		fOptionTimeLimit(0.f),
+		iLengthX(0),
+		iLengthY(0),
+		iStartY(0)
+	{
+	}
+}ANIMATIONCLIP2D, *PANIMATIONCLIP2D;
+
+typedef struct GP_DLL _tagAnimation2DCBuffer
+{
+	int		iType;
+	int		iFrameX;
+	int		iFrameY;
+	int		iLengthX;
+	int		iLengthY;
+	Vector3	vEmpty;
+}ANIMATION2DBUFFER, *PANIMATION2DBUFFER;
+
+// Button ConstantBuffer
+typedef struct GP_DLL _tagButtonCBuffer
+{
+	Vector4	vColor;
+	float	fLight;
+	Vector3	vEmpty;
+}BUTTONCBUFFER, *PBUTTONCBUFFER;
+
 GP_END
