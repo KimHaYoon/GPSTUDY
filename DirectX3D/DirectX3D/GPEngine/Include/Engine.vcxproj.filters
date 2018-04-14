@@ -141,6 +141,9 @@
     <ClInclude Include="Rendering\RenderState\BlendState.h">
       <Filter>04. Rendering\02. RenderState</Filter>
     </ClInclude>
+    <ClInclude Include="Rendering\RenderState\DepthStencilState.h">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -195,6 +198,9 @@
       <Filter>04. Rendering\02. RenderState</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\RenderState\BlendState.cpp">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderState\DepthStencilState.cpp">
       <Filter>04. Rendering\02. RenderState</Filter>
     </ClCompile>
   </ItemGroup>

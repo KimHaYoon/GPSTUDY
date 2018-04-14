@@ -54,7 +54,9 @@ bool BlendState::CreateBlendState(const string & strKey, bool bAlphaCoverage, bo
 	// -> 알파-포괄도 변환을 위해서는 다중표본화를 활성화해야 한다
 	//		=> 즉, 다중표본화에 맞는 후면 버퍼와 깊이 버퍼를 생성해야 한다.
 	tDesc.IndependentBlendEnable = bIndependent;
-	// Direct
+	/* Direct3D 11에서는 장면을 최대 8개까지의 렌더 대상들에 동시에 렌더링할 수 있다.
+	이 플래그를 True로 설정하면 각 렌더 대상마다 혼합을 개별적으로(혼합 활성화 여부, 혼합 게수, 연산자 등을 각각 다르게 두어서) 수행할 수 있다. 
+	False로 설정하면 모든 렌더 대상의 혼합연산이 RenderTarget 배열의 첫 원소에 있는 설정에 따라 동일하게 수행된다.*/
 
 	for (size_t i = 0; i < m_vecDesc.size(); ++i)
 	{
@@ -70,10 +72,19 @@ bool BlendState::CreateBlendState(const string & strKey, bool bAlphaCoverage, bo
 	return true;
 }
 
+// 기존의 혼합상태를 받아와서 Old~ 에 저장을 하고 내가 생성한 혼합 상태를 설정
 void BlendState::SetState()
 {
+	// OMGetBlendState : 기존의 혼합 상태를 받아오는 함수
+	CONTEXT->OMGetBlendState((ID3D11BlendState**)&m_pOldState, m_fOldBlendFactor,
+		&m_iOldSampleMask);
+	// OMSetBlendState : 혼합 상태를 설정하는 함수
+	CONTEXT->OMSetBlendState((ID3D11BlendState*)m_pState, m_fBlendFactor, m_iSampleMask);
 }
 
+// 기존의 혼합 상태로 설정
 void BlendState::ResetState()
 {
+	CONTEXT->OMSetBlendState((ID3D11BlendState*)m_pOldState, m_fOldBlendFactor, m_iOldSampleMask);
+	SAFE_RELEASE(m_pOldState);
 }
