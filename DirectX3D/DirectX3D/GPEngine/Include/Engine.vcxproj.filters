@@ -64,6 +64,9 @@
     <Filter Include="04. Rendering\01. Shader\01. HLSL">
       <UniqueIdentifier>{49b55ac9-344a-4eed-9abc-f3c82e753b85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Rendering\02. RenderState">
+      <UniqueIdentifier>{ebd273f5-03ed-403f-9f30-f6c9f1dc8c8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -132,6 +135,12 @@
     <ClInclude Include="Rendering\Shader\ShaderManager.h">
       <Filter>04. Rendering\01. Shader</Filter>
     </ClInclude>
+    <ClInclude Include="Rendering\RenderState\RenderState.h">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderState\BlendState.h">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -181,6 +190,12 @@
     </ClCompile>
     <ClCompile Include="Rendering\Shader\ShaderManager.cpp">
       <Filter>04. Rendering\01. Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderState\RenderState.cpp">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderState\BlendState.cpp">
+      <Filter>04. Rendering\02. RenderState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
