@@ -3,17 +3,16 @@
 
 GP_USING
 
-BlendState::BlendState()
+CBlendState::CBlendState()
 {
 	m_eType = RST_BLEND;
 }
 
-
-BlendState::~BlendState()
+CBlendState::~CBlendState()
 {
 }
 
-bool BlendState::AddDesc(bool bEnable, D3D11_BLEND eSrc, D3D11_BLEND eDest, D3D11_BLEND_OP eOp, D3D11_BLEND eSrcAlpha, D3D11_BLEND eDestAlpha, D3D11_BLEND_OP eAlphaOp, UINT8 iWriteMask)
+bool CBlendState::AddDesc(bool bEnable, D3D11_BLEND eSrc, D3D11_BLEND eDest, D3D11_BLEND_OP eOp, D3D11_BLEND eSrcAlpha, D3D11_BLEND eDestAlpha, D3D11_BLEND_OP eAlphaOp, UINT8 iWriteMask)
 {
 	if(m_vecDesc.size() == 8)
 		return false;
@@ -35,7 +34,7 @@ bool BlendState::AddDesc(bool bEnable, D3D11_BLEND eSrc, D3D11_BLEND eDest, D3D1
 	return true;
 }
 
-void BlendState::AddDesc(const D3D11_RENDER_TARGET_BLEND_DESC & tDesc)
+void CBlendState::AddDesc(const D3D11_RENDER_TARGET_BLEND_DESC & tDesc)
 {
 	if (m_vecDesc.size() == 8)
 		return;
@@ -43,7 +42,7 @@ void BlendState::AddDesc(const D3D11_RENDER_TARGET_BLEND_DESC & tDesc)
 	m_vecDesc.push_back(tDesc);
 }
 
-bool BlendState::CreateBlendState(const string & strKey, bool bAlphaCoverage, bool bIndependent)
+bool CBlendState::CreateBlendState(const string & strKey, bool bAlphaCoverage, bool bIndependent)
 {
 	m_strKey = strKey;
 
@@ -73,7 +72,7 @@ bool BlendState::CreateBlendState(const string & strKey, bool bAlphaCoverage, bo
 }
 
 // 기존의 혼합상태를 받아와서 Old~ 에 저장을 하고 내가 생성한 혼합 상태를 설정
-void BlendState::SetState()
+void CBlendState::SetState()
 {
 	// OMGetBlendState : 기존의 혼합 상태를 받아오는 함수
 	CONTEXT->OMGetBlendState((ID3D11BlendState**)&m_pOldState, m_fOldBlendFactor,
@@ -83,7 +82,7 @@ void BlendState::SetState()
 }
 
 // 기존의 혼합 상태로 설정
-void BlendState::ResetState()
+void CBlendState::ResetState()
 {
 	CONTEXT->OMSetBlendState((ID3D11BlendState*)m_pOldState, m_fOldBlendFactor, m_iOldSampleMask);
 	SAFE_RELEASE(m_pOldState);

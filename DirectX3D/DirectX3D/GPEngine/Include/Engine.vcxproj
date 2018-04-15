@@ -175,8 +175,10 @@
     <ClInclude Include="EngineFlag.h" />
     <ClInclude Include="EngineMacro.h" />
     <ClInclude Include="EngineTypes.h" />
+    <ClInclude Include="Rendering\RenderManager.h" />
     <ClInclude Include="Rendering\RenderState\BlendState.h" />
     <ClInclude Include="Rendering\RenderState\DepthStencilState.h" />
+    <ClInclude Include="Rendering\RenderState\RasterizerState.h" />
     <ClInclude Include="Rendering\RenderState\RenderState.h" />
     <ClInclude Include="Rendering\Shader\Shader.h" />
     <ClInclude Include="Rendering\Shader\ShaderManager.h" />
@@ -197,8 +199,10 @@
     <ClCompile Include="Core\Timer\Timer.cpp" />
     <ClCompile Include="Core\Timer\TimerManager.cpp" />
     <ClCompile Include="Device\Device.cpp" />
+    <ClCompile Include="Rendering\RenderManager.cpp" />
     <ClCompile Include="Rendering\RenderState\BlendState.cpp" />
     <ClCompile Include="Rendering\RenderState\DepthStencilState.cpp" />
+    <ClCompile Include="Rendering\RenderState\RasterizerState.cpp" />
     <ClCompile Include="Rendering\RenderState\RenderState.cpp" />
     <ClCompile Include="Rendering\Shader\Shader.cpp" />
     <ClCompile Include="Rendering\Shader\ShaderManager.cpp" />

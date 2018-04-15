@@ -144,6 +144,12 @@
     <ClInclude Include="Rendering\RenderState\DepthStencilState.h">
       <Filter>04. Rendering\02. RenderState</Filter>
     </ClInclude>
+    <ClInclude Include="Rendering\RenderState\RasterizerState.h">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderManager.h">
+      <Filter>04. Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -202,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="Rendering\RenderState\DepthStencilState.cpp">
       <Filter>04. Rendering\02. RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderState\RasterizerState.cpp">
+      <Filter>04. Rendering\02. RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderManager.cpp">
+      <Filter>04. Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

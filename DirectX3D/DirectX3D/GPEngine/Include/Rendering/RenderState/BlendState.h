@@ -3,15 +3,15 @@
 
 GP_BEGIN
 
-class GP_DLL BlendState :
+class GP_DLL CBlendState :
 	public CRenderState
 {
 private:
 	friend class CRenderManager;
 
 private:
-	BlendState();
-	~BlendState();
+	CBlendState();
+	~CBlendState();
 
 private:
 	vector<D3D11_RENDER_TARGET_BLEND_DESC>	m_vecDesc;
