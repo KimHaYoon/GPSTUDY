@@ -187,6 +187,7 @@
     <ClInclude Include="Resources\Texture\DirectXTex.h" />
     <ClInclude Include="Resources\Texture\Sampler.h" />
     <ClInclude Include="Resources\Texture\Texture.h" />
+    <ClInclude Include="Scene\Layer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
@@ -210,6 +211,7 @@
     <ClCompile Include="Resources\ResourcesManager.cpp" />
     <ClCompile Include="Resources\Texture\Sampler.cpp" />
     <ClCompile Include="Resources\Texture\Texture.cpp" />
+    <ClCompile Include="Scene\Layer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Texture\DirectXTex.inl" />

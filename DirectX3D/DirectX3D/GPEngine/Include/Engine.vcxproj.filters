@@ -67,6 +67,12 @@
     <Filter Include="04. Rendering\02. RenderState">
       <UniqueIdentifier>{ebd273f5-03ed-403f-9f30-f6c9f1dc8c8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05. Scene\01. Layer">
+      <UniqueIdentifier>{82602314-0961-4767-b28c-39dd83c1b334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Scene\02. SceneScript">
+      <UniqueIdentifier>{b0666581-1b21-4deb-894a-7299d0e8989d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -150,6 +156,9 @@
     <ClInclude Include="Rendering\RenderManager.h">
       <Filter>04. Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Layer.h">
+      <Filter>05. Scene\01. Layer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -214,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="Rendering\RenderManager.cpp">
       <Filter>04. Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Layer.cpp">
+      <Filter>05. Scene\01. Layer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
