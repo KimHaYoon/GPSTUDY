@@ -175,6 +175,7 @@
     <ClInclude Include="EngineFlag.h" />
     <ClInclude Include="EngineMacro.h" />
     <ClInclude Include="EngineTypes.h" />
+    <ClInclude Include="GameObject\GameObject.h" />
     <ClInclude Include="Rendering\RenderManager.h" />
     <ClInclude Include="Rendering\RenderState\BlendState.h" />
     <ClInclude Include="Rendering\RenderState\DepthStencilState.h" />
@@ -188,6 +189,9 @@
     <ClInclude Include="Resources\Texture\Sampler.h" />
     <ClInclude Include="Resources\Texture\Texture.h" />
     <ClInclude Include="Scene\Layer.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Scene\SceneScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
@@ -200,6 +204,7 @@
     <ClCompile Include="Core\Timer\Timer.cpp" />
     <ClCompile Include="Core\Timer\TimerManager.cpp" />
     <ClCompile Include="Device\Device.cpp" />
+    <ClCompile Include="GameObject\GameObject.cpp" />
     <ClCompile Include="Rendering\RenderManager.cpp" />
     <ClCompile Include="Rendering\RenderState\BlendState.cpp" />
     <ClCompile Include="Rendering\RenderState\DepthStencilState.cpp" />
@@ -212,6 +217,9 @@
     <ClCompile Include="Resources\Texture\Sampler.cpp" />
     <ClCompile Include="Resources\Texture\Texture.cpp" />
     <ClCompile Include="Scene\Layer.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Scene\SceneScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Texture\DirectXTex.inl" />

@@ -159,6 +159,18 @@
     <ClInclude Include="Scene\Layer.h">
       <Filter>05. Scene\01. Layer</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneScript.h">
+      <Filter>05. Scene\02. SceneScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\GameObject.h">
+      <Filter>06. GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -226,6 +238,18 @@
     </ClCompile>
     <ClCompile Include="Scene\Layer.cpp">
       <Filter>05. Scene\01. Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneScript.cpp">
+      <Filter>05. Scene\02. SceneScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\GameObject.cpp">
+      <Filter>06. GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
