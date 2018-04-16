@@ -73,6 +73,39 @@
     <Filter Include="05. Scene\02. SceneScript">
       <UniqueIdentifier>{b0666581-1b21-4deb-894a-7299d0e8989d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07. Component\01. Transform">
+      <UniqueIdentifier>{ead63344-dfe8-43ee-87cf-47aaadd0f657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\02. Renderer">
+      <UniqueIdentifier>{301e27a0-ae18-4e92-9d1e-97b5dc4b6d37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\03. Script">
+      <UniqueIdentifier>{083be72d-fc58-4cc7-a6fc-4f429b2686d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\04. Camera">
+      <UniqueIdentifier>{0d35d777-3515-440d-906b-402fdc0746a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\05. Material">
+      <UniqueIdentifier>{8ef34f90-6153-4763-8b93-6f85a3145939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\06. Animation">
+      <UniqueIdentifier>{37477f54-776b-459f-96db-09cf60393d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\07. Collider">
+      <UniqueIdentifier>{f16525d3-38d0-430e-bb06-65f076600911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\08. Terrain">
+      <UniqueIdentifier>{a5f6a7b9-33c4-4a72-8421-72fdbd46c3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\09. Mouse">
+      <UniqueIdentifier>{4d9d50fb-d81d-4bae-9a7f-e8d2c1dfab21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\10. UI">
+      <UniqueIdentifier>{e154f5de-0761-490b-a4fe-73e331495773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\11. Navigation">
+      <UniqueIdentifier>{cd5ec548-382b-462c-83cd-c880003f13a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -171,6 +204,12 @@
     <ClInclude Include="GameObject\GameObject.h">
       <Filter>06. GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Component\Component.h">
+      <Filter>07. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Transform\Transform.h">
+      <Filter>07. Component\01. Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -250,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="GameObject\GameObject.cpp">
       <Filter>06. GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Component.cpp">
+      <Filter>07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Transform\Transform.cpp">
+      <Filter>07. Component\01. Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

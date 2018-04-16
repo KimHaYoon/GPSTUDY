@@ -160,6 +160,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Component\Component.h" />
+    <ClInclude Include="Component\Transform\Transform.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Core\File\PathManager.h" />
     <ClInclude Include="Core\Math\Math.h" />
@@ -194,6 +196,8 @@
     <ClInclude Include="Scene\SceneScript.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Component\Component.cpp" />
+    <ClCompile Include="Component\Transform\Transform.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\File\PathManager.cpp" />
     <ClCompile Include="Core\Math\Matrix.cpp" />

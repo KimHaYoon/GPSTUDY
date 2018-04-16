@@ -89,3 +89,13 @@ enum COMPONENT_TYPE
 	CT_NAVIGATION,
 	CT_END
 };
+
+// Parent Modify Type
+enum PARENT_MODIFY_TYPE
+{
+	PMT_NONE,
+	PMT_SCALE = 0x1,
+	PMT_ROT = 0x2,
+	PMT_POS = 0x4,
+	PMT_ALL = PMT_SCALE | PMT_ROT | PMT_POS
+};

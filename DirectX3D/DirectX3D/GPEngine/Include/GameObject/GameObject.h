@@ -89,6 +89,8 @@ public:
 	void UpdateTransformHierarchy();
 
 public:
+	// 컴포넌트를 Tag, TypeName, Type, TypeID로 찾기
+
 	template<typename T>
 	T* FindComponentFromTag(const string& strTag)
 	{
@@ -110,9 +112,136 @@ public:
 	template<typename T>
 	T* FindComponentFromTypeName(const string& strTypeName)
 	{
+		list<CComponent*>::iterator	iter;
+		list<CComponent*>::iterator	iterEnd = m_ComList.end();
 
+		for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+		{
+			if ((*iter)->GetTypeName() == strTypeName)
+			{
+				(*iter)->AddRef();
+				return(T*)*iter;
+			}
+		}
+
+		return NULL;
+	}
+
+	template<typename T>
+	T* FindComponentFromType(COMPONENT_TYPE eType)
+	{
+		list<CComponent*>::iterator	iter;
+		list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+		for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+		{
+			if ((*iter)->GetComponentType() == eType)
+			{
+				(*iter)->AddRef();
+				return (T*)*iter;
+			}
+		}
+
+		return NULL;
 	}
 	
+	template<typename T>
+	T* FindComponentFromTypeID()
+	{
+		list<CComponent*>::iterator	iter;
+		list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+		for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+		{
+			if ((*iter)->GetTypeID() == &typeid(T))
+			{
+				(*iter)->AddRef();
+				return (T*)*iter;
+			}
+		}
+
+		return NULL;
+	}
+
+public:
+	const list<CComponent*>* FindComponentsFromTag(const string& strTag);
+	const list<CComponent*>* FindComponentsFromTypeName(const string& strTypeName);
+	const list<CComponent*>* FindComponentsFromType(COMPONENT_TYPE eType);
+
+	template<typename T>
+	const list<CComponent*>* FindComponentsFromTypeID()
+	{
+		Safe_Release_VecList(m_FindList);
+		list<CComponent*>::iterator	iter;
+		list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+		for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+		{
+			if ((*iter)->GetTypeID() == &typeid(T))
+			{
+				(*iter)->AddRef();
+				m_FindList.push_back(*iter);
+			}
+		}
+
+		return &m_FindList;
+	}
+
+public:
+	bool CheckComponentFromTag(const string& strTag);
+	bool CheckComponentFromTypeName(const string& strTypeName);
+	bool CheckComponentFromType(COMPONENT_TYPE eType);
+
+	template<typename T>
+	bool CheckComponentTypeID()
+	{
+		list<CComponent*>::iterator	iter;
+		list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+		for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+		{
+			if ((*iter)->GetTypeID() == &typeid(T))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+public:
+	CComponent* AddComponent(CComponent* pComponent);
+
+	template<typename T>
+	T* AddComponent(const string& strTag)
+	{
+		T* pCom = NULL;
+
+		if (m_bDontDestroy)
+		{
+			pCom = FindComponentFromTag<T>(strTag);
+
+			if (pCom)
+				return pCom;
+		}
+
+		pCom = new T;
+
+		pCom->SetTag(strTag);
+		pCom->SetScene(m_pScene);
+		pCom->SetLayer(m_pLayer);
+		pCom->SetGameObject(this);
+		pCom->SetTransform(m_pTransform);
+
+		if (!pCom->Init())
+		{
+			SAFE_RELEASE(pCom);
+			return NULL;
+		}
+
+		return (T*)AddComponent(pCom);
+	}
+
 };
 
 GP_END
