@@ -20,9 +20,11 @@ private:
 
 public:
 	void SetZOrder(int iZOrder);
+	void SetScene(class CScene* pScene);
 	
 public:
 	int	 GetZOrder()	const;
+	class CScene* GetScene()	const;
 
 public:
 	bool Init();
@@ -31,6 +33,12 @@ public:
 	int LateUpdate(float fTime);
 	void Collision(float fTime);
 	void Render(float fTime);
+
+public:
+	void AddObject(class CGameObject* pObj);
+	void EraseObject(class CGameObject* pObj);
+	void EraseObject(const string& strTag);
+	class CGameObject* GetObj(const string& strTag);
 };
 
 GP_END

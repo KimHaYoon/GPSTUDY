@@ -1,6 +1,6 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
 C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Engine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  RenderManager.cpp
+  Transform.cpp
 d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector4.h(9): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT4'이(가) DLL 인터페이스 struct 'GP::_tagVector4'의 기본으로 사용되었습니다.
   c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(554): note: 'DirectX::XMFLOAT4' 선언을 참조하십시오.
   d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector4.h(7): note: 'GP::_tagVector4' 선언을 참조하십시오.
@@ -12,95 +12,222 @@ d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector2.h(10): w
 d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector3.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT3'이(가) DLL 인터페이스 struct 'GP::_tagVector3'의 기본으로 사용되었습니다.
   c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(500): note: 'DirectX::XMFLOAT3' 선언을 참조하십시오.
   d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector3.h(8): note: 'GP::_tagVector3' 선언을 참조하십시오.
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\rendermanager.h(10): warning C4251: 'GP::CRenderManager::m_mapRenderState': class 'std::unordered_map<std::string,GP::CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CRenderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::CRenderState *
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\rendermanager.h(10): note: 'std::unordered_map<std::string,GP::CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::CRenderState *
-          ]
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\rendermanager.h(11): warning C4251: 'GP::CRenderManager::m_vecDesc': class 'std::vector<D3D11_RENDER_TARGET_BLEND_DESC,std::allocator<_Ty>>'에서는 class 'GP::CRenderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Ty=D3D11_RENDER_TARGET_BLEND_DESC
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\rendermanager.h(11): note: 'std::vector<D3D11_RENDER_TARGET_BLEND_DESC,std::allocator<_Ty>>' 선언을 참조하십시오.
-          with
-          [
-              _Ty=D3D11_RENDER_TARGET_BLEND_DESC
-          ]
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(10): warning C4251: 'GP::CShaderManager::m_mapShader': class 'std::unordered_map<std::string,GP::CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::CShader *
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(10): note: 'std::unordered_map<std::string,GP::CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::CShader *
-          ]
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(11): warning C4251: 'GP::CShaderManager::m_mapLayout': class 'std::unordered_map<std::string,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Kty=std::string,
-              _Ty=ID3D11InputLayout *
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(11): note: 'std::unordered_map<std::string,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
-          with
-          [
-              _Kty=std::string,
-              _Ty=ID3D11InputLayout *
-          ]
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(12): warning C4251: 'GP::CShaderManager::m_mapCBuffer': class 'std::unordered_map<std::string,GP::PCONSTANTBUFFER,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::PCONSTANTBUFFER
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(12): note: 'std::unordered_map<std::string,GP::PCONSTANTBUFFER,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
-          with
-          [
-              _Kty=std::string,
-              _Ty=GP::PCONSTANTBUFFER
-          ]
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(13): warning C4251: 'GP::CShaderManager::m_vecInputDesc': class 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>'에서는 class 'GP::CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-          with
-          [
-              _Ty=D3D11_INPUT_ELEMENT_DESC
-          ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\shader\shadermanager.h(13): note: 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>' 선언을 참조하십시오.
-          with
-          [
-              _Ty=D3D11_INPUT_ELEMENT_DESC
-          ]
 d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\obj.h(15): warning C4251: 'GP::CObj::m_strTag': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
 d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\obj.h(16): warning C4251: 'GP::CObj::m_strTypeName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\renderstate\renderstate.h(20): warning C4251: 'GP::CRenderState::m_strKey': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CRenderState'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): warning C4251: 'GP::CGameObject::m_ObjList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(11): warning C4251: 'GP::CGameObject::m_FindObjectList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(12): warning C4251: 'GP::CGameObject::m_mapPrototype': class 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(12): note: 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(51): warning C4251: 'GP::CGameObject::m_ComList': class 'std::list<GP::CComponent *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\component\component.h(80): note: 'std::list<GP::CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(52): warning C4251: 'GP::CGameObject::m_FindList': class 'std::list<GP::CComponent *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\component\component.h(80): note: 'std::list<GP::CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(53): warning C4251: 'GP::CGameObject::m_ChildList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  Component.cpp
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector4.h(9): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT4'이(가) DLL 인터페이스 struct 'GP::_tagVector4'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(554): note: 'DirectX::XMFLOAT4' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector4.h(7): note: 'GP::_tagVector4' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\matrix.h(9): warning C4251: 'GP::_tagMatrix::mat': struct 'DirectX::XMMATRIX'에서는 union 'GP::_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(393): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector2.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT2'이(가) DLL 인터페이스 struct 'GP::_tagVector2'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(449): note: 'DirectX::XMFLOAT2' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector2.h(8): note: 'GP::_tagVector2' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector3.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT3'이(가) DLL 인터페이스 struct 'GP::_tagVector3'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(500): note: 'DirectX::XMFLOAT3' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\math\vector3.h(8): note: 'GP::_tagVector3' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\obj.h(15): warning C4251: 'GP::CObj::m_strTag': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
-d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\renderstate\blendstate.h(17): warning C4251: 'GP::CBlendState::m_vecDesc': class 'std::vector<D3D11_RENDER_TARGET_BLEND_DESC,std::allocator<_Ty>>'에서는 class 'GP::CBlendState'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\core\obj.h(16): warning C4251: 'GP::CObj::m_strTypeName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): warning C4251: 'GP::CGameObject::m_ObjList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
-              _Ty=D3D11_RENDER_TARGET_BLEND_DESC
+              _Ty=GP::CGameObject *
           ]
-  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\rendering\rendermanager.h(11): note: 'std::vector<D3D11_RENDER_TARGET_BLEND_DESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
-              _Ty=D3D11_RENDER_TARGET_BLEND_DESC
+              _Ty=GP::CGameObject *
           ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(11): warning C4251: 'GP::CGameObject::m_FindObjectList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(12): warning C4251: 'GP::CGameObject::m_mapPrototype': class 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(12): note: 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(51): warning C4251: 'GP::CGameObject::m_ComList': class 'std::list<GP::CComponent *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\component\component.h(80): note: 'std::list<GP::CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(52): warning C4251: 'GP::CGameObject::m_FindList': class 'std::list<GP::CComponent *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\component\component.h(80): note: 'std::list<GP::CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CComponent *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(53): warning C4251: 'GP::CGameObject::m_ChildList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\scene.h(17): warning C4251: 'GP::CScene::m_vecLayer': class 'std::vector<GP::CLayer *,std::allocator<_Ty>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CLayer *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\scene.h(17): note: 'std::vector<GP::CLayer *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CLayer *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\scene.h(18): warning C4251: 'GP::CScene::m_vecSceneScript': class 'std::vector<GP::CSceneManager *,std::allocator<_Ty>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CSceneManager *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\scene.h(18): note: 'std::vector<GP::CSceneManager *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CSceneManager *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\scene.h(22): warning C4251: 'GP::CScene::m_mapCamera': class 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(12): note: 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\scene\layer.h(17): warning C4251: 'GP::CLayer::m_ObjList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CLayer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\gpengine\include\gameobject\gameobject.h(10): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  코드를 생성하고 있습니다...
+     ../Bin_Debug\GPEngine_Debug.lib 라이브러리 및 ../Bin_Debug\GPEngine_Debug.exp 개체를 생성하고 있습니다.
+DirectXTex.lib(BC.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(BC.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(BC4BC5.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(BC4BC5.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(BC6HBC7.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(BC6HBC7.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexCompress.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexCompress.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexConvert.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexConvert.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexD3D11.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexD3D11.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexDDS.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexDDS.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexImage.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexImage.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexMipMaps.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexMipMaps.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexTGA.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexTGA.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexUtil.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexUtil.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex.lib(DirectXTexWIC.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex.lib(DirectXTexWIC.obj)' 또는 'D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Bin_Debug\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
   Engine.vcxproj -> D:\GPSTUDY\trunk\DirectX3D\DirectX3D\GPEngine\Include\../Bin_Debug\GPEngine_Debug.dll
   Engine.vcxproj -> ../Bin_Debug\GPEngine_Debug.pdb (Full PDB)
-  0개 파일이 복사되었습니다.
+  .\GPEngine\Include\EngineFlag.h
+  .\GPEngine\Include\Component\Component.h
+  .\GPEngine\Include\Component\Transform\Transform.h
+  .\GPEngine\Include\GameObject\GameObject.h
+  .\GPEngine\Include\Scene\Layer.h
+  .\GPEngine\Include\Scene\Scene.h
+  .\GPEngine\Include\Scene\SceneManager.h
+  .\GPEngine\Include\Scene\SceneScript.h
+  8개 파일이 복사되었습니다.
+  파일을 찾을 수 없습니다-*.inl
   0개 파일이 복사되었습니다.
   .\GPEngine\Bin_Debug\GPEngine_Debug.dll
-  1개 파일이 복사되었습니다.
+  .\GPEngine\Bin_Debug\GPEngine_Debug.lib
+  2개 파일이 복사되었습니다.
   .\Engine\Bin_Debug\GPEngine_Debug.dll
-  1개 파일이 복사되었습니다.
+  .\Engine\Bin_Debug\GPEngine_Debug.lib
+  2개 파일이 복사되었습니다.

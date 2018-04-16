@@ -1,27 +1,18 @@
 #include "GameObject.h"
+#include "../Scene/Layer.h"
 
 GP_USING
 
-CGameObject::CGameObject()
-{
-}
-
-
-CGameObject * CGameObject::FindPrototype(const string & strKey)
-{
-	return nullptr;
-}
-
-CGameObject::CGameObject(const CGameObject & obj)
-{
-}
-
-CGameObject::~CGameObject()
-{
-}
+list<CGameObject*> CGameObject::m_ObjList;
+list<CGameObject*> CGameObject::m_FindObjectList;
+unordered_map<string, CGameObject*> CGameObject::m_mapPrototype;
 
 CGameObject * CGameObject::CreateObject(const string & strTag, CLayer * pLayer)
 {
+	CGameObject* pObj = new CGameObject;
+
+	pObj->SetTag(strTag);
+
 	return nullptr;
 }
 
@@ -108,6 +99,53 @@ const list<CGameObject*>* CGameObject::FindObjects(const string & strTag)
 	return nullptr;
 }
 
+CGameObject * CGameObject::FindPrototype(const string & strKey)
+{
+	return nullptr;
+}
+
+CGameObject::CGameObject()
+{
+}
+
+CGameObject::CGameObject(const CGameObject & obj)
+{
+}
+
+CGameObject::~CGameObject()
+{
+}
+
+void CGameObject::DontDestroyOnLoad(bool bDontDestroy)
+{
+}
+
+bool CGameObject::IsDontDestroy() const
+{
+	return false;
+}
+
+void CGameObject::AddChild(CGameObject * pChild)
+{
+}
+
+void CGameObject::DeleteChild(const string & strTag)
+{
+}
+
+void CGameObject::DeleteChild(CGameObject * pChild)
+{
+}
+
+void CGameObject::DeleteParent()
+{
+}
+
+CGameObject * CGameObject::GetParent() const
+{
+	return nullptr;
+}
+
 void CGameObject::ChangeLayer(CLayer * pLayer)
 {
 }
@@ -171,36 +209,6 @@ void CGameObject::OnCollisionLeave(CCollider * pSrc, CCollider * pDest, float fT
 
 void CGameObject::UpdateTransformHierarchy()
 {
-}
-
-void CGameObject::DontDestroyOnLoad(bool bDontDestroy)
-{
-}
-
-bool CGameObject::IsDontDestroy() const
-{
-	return false;
-}
-
-void CGameObject::AddChild(CGameObject * pChild)
-{
-}
-
-void CGameObject::DeleteChild(const string & strTag)
-{
-}
-
-void CGameObject::DeleteChild(CGameObject * pChild)
-{
-}
-
-void CGameObject::DeleteParent()
-{
-}
-
-CGameObject * CGameObject::GetParent() const
-{
-	return nullptr;
 }
 
 const list<CComponent*>* CGameObject::FindComponentsFromTag(const string & strTag)

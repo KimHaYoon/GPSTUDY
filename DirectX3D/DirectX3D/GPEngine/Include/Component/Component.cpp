@@ -6,7 +6,7 @@
 
 GP_USING
 
-CComponent::CComponent() : 
+CComponent::CComponent() :
 	m_pScene(NULL),
 	m_pLayer(NULL),
 	m_pGameObject(NULL),
