@@ -18,7 +18,7 @@ public:
 	static CGameObject* CreateObjectDontDestroy(const string& strTag, class CLayer* pLayer);
 	static CGameObject* CreatePrototypeDontDestroy(const string& strKey, class CScene* pScene);
 
-	static void ChangePrototypeScene(const string& strkey, class CScene* pScene);
+	static void ChangePrototypeScene(const string& strKey, class CScene* pScene);
 	static void AddPrototype(const string& strTag, CGameObject* pPrototype);
 	static void AddObjList(CGameObject* pObj);
 	static void ChangeLayer(const string& strTag, class CLayer* pLayer);
