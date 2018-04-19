@@ -7,6 +7,9 @@ class GP_DLL CGameObject :
 	public CObj
 {
 private:
+	friend class CScene;
+
+private:
 	static list<CGameObject*>	m_ObjList;
 	static list<CGameObject*>	m_FindObjectList;
 	static unordered_map<string, CGameObject*>	m_mapPrototype;

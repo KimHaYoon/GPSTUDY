@@ -10,6 +10,8 @@ _tagVector4 _tagVector4::Yellow = _tagVector4(1.f, 1.f, 0.f, 1.f);
 _tagVector4 _tagVector4::Magenta = _tagVector4(1.f, 0.f, 1.f, 1.f);
 _tagVector4 _tagVector4::White = _tagVector4(1.f, 1.f, 1.f, 1.f);
 _tagVector4 _tagVector4::Black = _tagVector4(0.f, 0.f, 0.f, 1.f);
+_tagVector4 _tagVector4::One = _tagVector4(1.f, 1.f, 1.f, 1.f);
+_tagVector4 _tagVector4::Zero = _tagVector4(0.f, 0.f, 0.f, 0.f);
 
 _tagVector4::_tagVector4()
 {

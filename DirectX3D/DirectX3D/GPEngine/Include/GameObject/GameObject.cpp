@@ -2,6 +2,7 @@
 #include "../Scene/Layer.h"
 #include "../Scene/SceneManager.h"
 #include "../Component/Transform/Transform.h"
+#include "../Core/ColliderManager/CollisionManager.h"
 
 GP_USING
 
@@ -438,122 +439,565 @@ bool CGameObject::IsDontDestroy() const
 
 void CGameObject::AddChild(CGameObject * pChild)
 {
+	pChild->m_pParent = this;
+	pChild->SetScene(m_pScene);
+	pChild->SetLayer(m_pLayer);
+	pChild->AddRef();
+	pChild->m_pTransform->m_pParent = m_pTransform;
 
+	m_ChildList.push_back(pChild);
 }
 
 void CGameObject::DeleteChild(const string & strTag)
 {
+	list<CGameObject*>::iterator iterC;
+	list<CGameObject*>::iterator iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd; ++iterC)
+	{
+		if ((*iterC)->GetTag() == strTag)
+		{
+			(*iterC)->m_pParent = NULL;
+			SAFE_RELEASE((*iterC));
+			m_ChildList.erase(iterC);
+			break;
+		}
+	}
 }
 
 void CGameObject::DeleteChild(CGameObject * pChild)
 {
+	list<CGameObject*>::iterator iterC;
+	list<CGameObject*>::iterator iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd; ++iterC)
+	{
+		if (*iterC == pChild)
+		{
+			(*iterC)->m_pParent = NULL;
+			SAFE_RELEASE((*iterC));
+			m_ChildList.erase(iterC);
+			break;
+		}
+	}
 }
 
 void CGameObject::DeleteParent()
 {
+	if (m_pParent)
+	{
+		m_pParent->DeleteChild(this);
+		m_pParent = NULL;
+	}
 }
 
 CGameObject * CGameObject::GetParent() const
 {
-	return nullptr;
+	if (m_pParent)
+		m_pParent->AddRef();
+
+	return m_pParent;
 }
 
 void CGameObject::ChangeLayer(CLayer * pLayer)
 {
+	pLayer->AddObject(this);
+	m_pLayer->EraseObject(this);
+
+	list<CGameObject*>::iterator	iter;
+	list<CGameObject*>::iterator	iterEnd = m_ChildList.end();
+
+	for (iter = m_ChildList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->ChangeLayer(pLayer);
+	}
 }
 
 CTransform * CGameObject::GetTransform() const
 {
-	return nullptr;
+	m_pTransform->AddRef();
+
+	return m_pTransform;
 }
 
 void CGameObject::SetScene(CScene * pScene)
 {
+	m_pScene = pScene;
+
+	if (m_pTransform)
+		m_pTransform->SetScene(pScene);
+
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->SetScene(pScene);
+	}
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd; ++iterC)
+	{
+		(*iterC)->SetScene(pScene);
+	}
 }
 
 void CGameObject::SetLayer(CLayer * pLayer)
 {
+	m_pLayer = pLayer;
+
+	if (m_pTransform)
+		m_pTransform->SetLayer(pLayer);
+
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->SetLayer(pLayer);
+	}
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd; ++iterC)
+	{
+		(*iterC)->SetLayer(pLayer);
+	}
 }
 
 bool CGameObject::Init()
 {
-	return false;
+	m_pTransform = new  CTransform;
+
+	if (!m_pTransform->Init())
+	{
+		SAFE_RELEASE(m_pTransform);
+		return false;
+	}
+
+	m_pTransform->SetGameObject(this);
+	m_pTransform->SetScene(m_pScene);
+	m_pTransform->SetLayer(m_pLayer);
+	m_pTransform->SetTransform(m_pTransform);
+
+	return true;
 }
 
 void CGameObject::Input(float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd;)
+	{
+		if (!(*iter)->GetEnable())
+		{
+			++iter;
+			continue;
+		}
+
+		(*iter)->Input(fTime);
+
+		if (!(*iter)->GetAlive())
+		{
+			SAFE_RELEASE((*iter));
+			iter = m_ComList.erase(iter);
+		}
+
+		else
+			++iter;
+	}
+
+	m_pTransform->Input(fTime);
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd;)
+	{
+		if (!(*iterC)->GetEnable())
+		{
+			++iterC;
+			continue;
+		}
+
+		else if (!(*iterC)->GetAlive())
+		{
+			CGameObject::EraseObj(*iterC);
+			SAFE_RELEASE((*iterC));
+			iterC = m_ChildList.erase(iterC);
+			iterCEnd = m_ChildList.end();
+		}
+
+		else
+		{
+			(*iterC)->Input(fTime);
+			++iterC;
+		}
+	}
 }
 
 int CGameObject::Update(float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd;)
+	{
+		if (!(*iter)->GetEnable())
+		{
+			++iter;
+			continue;
+		}
+
+		(*iter)->Update(fTime);
+
+		if (!(*iter)->GetAlive())
+		{
+			SAFE_RELEASE((*iter));
+			iter = m_ComList.erase(iter);
+		}
+
+		else
+			++iter;
+	}
+
+	m_pTransform->Update(fTime);
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd;)
+	{
+		if (!(*iterC)->GetEnable())
+		{
+			++iterC;
+			continue;
+		}
+
+		else if (!(*iterC)->GetAlive())
+		{
+			CGameObject::EraseObj(*iterC);
+			SAFE_RELEASE((*iterC));
+			iterC = m_ChildList.erase(iterC);
+			iterCEnd = m_ChildList.end();
+		}
+
+		else
+		{
+			(*iterC)->Update(fTime);
+			++iterC;
+		}
+	}
+
 	return 0;
 }
 
 int CGameObject::LateUpdate(float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd;)
+	{
+		if (!(*iter)->GetEnable())
+		{
+			++iter;
+			continue;
+		}
+
+		(*iter)->LateUpdate(fTime);
+
+		if (!(*iter)->GetAlive())
+		{
+			SAFE_RELEASE((*iter));
+			iter = m_ComList.erase(iter);
+		}
+
+		else
+			++iter;
+	}
+
+	m_pTransform->LateUpdate(fTime);
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd;)
+	{
+		if (!(*iterC)->GetEnable())
+		{
+			++iterC;
+			continue;
+		}
+
+		else if (!(*iterC)->GetAlive())
+		{
+			CGameObject::EraseObj(*iterC);
+			SAFE_RELEASE((*iterC));
+			iterC = m_ChildList.erase(iterC);
+			iterCEnd = m_ChildList.end();
+		}
+
+		else
+		{
+			(*iterC)->LateUpdate(fTime);
+			++iterC;
+		}
+	}
+
 	return 0;
 }
 
 void CGameObject::Collision(float fTime)
 {
+	GET_SINGLE(CCollisionManager)->AddCollider(this);
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd;)
+	{
+		if (!(*iterC)->GetEnable())
+		{
+			++iterC;
+			continue;
+		}
+
+		else if (!(*iterC)->GetAlive())
+		{
+			CGameObject::EraseObj(*iterC);
+			SAFE_RELEASE((*iterC));
+			iterC = m_ChildList.erase(iterC);
+			iterCEnd = m_ChildList.end();
+		}
+
+		else
+		{
+			(*iterC)->Collision(fTime);
+			++iterC;
+		}
+	}
 }
 
 void CGameObject::Render(float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd;)
+	{
+		if (!(*iter)->GetEnable())
+		{
+			++iter;
+			continue;
+		}
+
+		(*iter)->Render(fTime);
+
+		if (!(*iter)->GetAlive())
+		{
+			SAFE_RELEASE((*iter));
+			iter = m_ComList.erase(iter);
+		}
+
+		else
+			++iter;
+	}
+
+	m_pTransform->Render(fTime);
+
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd;)
+	{
+		if (!(*iterC)->GetEnable())
+		{
+			++iterC;
+			continue;
+		}
+
+		else if (!(*iterC)->GetAlive())
+		{
+			CGameObject::EraseObj(*iterC);
+			SAFE_RELEASE((*iterC));
+			iterC = m_ChildList.erase(iterC);
+			iterCEnd = m_ChildList.end();
+		}
+
+		else
+		{
+			(*iterC)->Render(fTime);
+			++iterC;
+		}
+	}
 }
 
 CGameObject * CGameObject::Clone()
 {
-	return nullptr;
+	return new CGameObject(*this);
 }
 
 void CGameObject::OnCollisionEnter(CCollider * pSrc, CCollider * pDest, float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->OnCollisionEnter(pSrc, pDest, fTime);
+	}
 }
 
 void CGameObject::OnCollision(CCollider * pSrc, CCollider * pDest, float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->OnCollision(pSrc, pDest, fTime);
+	}
 }
 
 void CGameObject::OnCollisionLeave(CCollider * pSrc, CCollider * pDest, float fTime)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->OnCollisionLeave(pSrc, pDest, fTime);
+	}
 }
 
 void CGameObject::UpdateTransformHierarchy()
 {
+	list<CGameObject*>::iterator	iterC;
+	list<CGameObject*>::iterator	iterCEnd = m_ChildList.end();
+
+	for (iterC = m_ChildList.begin(); iterC != iterCEnd; ++iterC)
+	{
+		(*iterC)->m_pTransform->m_bUpdate = true;
+		(*iterC)->UpdateTransformHierarchy();
+	}
 }
 
 const list<CComponent*>* CGameObject::FindComponentsFromTag(const string & strTag)
 {
-	return nullptr;
+	Safe_Release_VecList(m_FindList);
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetTag() == strTag)
+		{
+			(*iter)->AddRef();
+			m_FindList.push_back(*iter);
+		}
+	}
+
+	return &m_FindList;
 }
 
 const list<CComponent*>* CGameObject::FindComponentsFromTypeName(const string & strTypeName)
 {
-	return nullptr;
+	Safe_Release_VecList(m_FindList);
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetTypeName() == strTypeName)
+		{
+			(*iter)->AddRef();
+			m_FindList.push_back(*iter);
+		}
+	}
+
+	return &m_FindList;
 }
 
 const list<CComponent*>* CGameObject::FindComponentsFromType(COMPONENT_TYPE eType)
 {
-	return nullptr;
+	Safe_Release_VecList(m_FindList);
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetComponentType() == eType)
+		{
+			(*iter)->AddRef();
+			m_FindList.push_back(*iter);
+		}
+	}
+
+	return &m_FindList;
 }
 
 bool CGameObject::CheckComponentFromTag(const string & strTag)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetTag() == strTag)
+		{
+			return true;
+		}
+	}
+
 	return false;
 }
 
 bool CGameObject::CheckComponentFromTypeName(const string & strTypeName)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetTypeName() == strTypeName)
+		{
+			return true;
+		}
+	}
+
 	return false;
 }
 
 bool CGameObject::CheckComponentFromType(COMPONENT_TYPE eType)
 {
+	list<CComponent*>::iterator	iter;
+	list<CComponent*>::iterator	iterEnd = m_ComList.end();
+
+	for (iter = m_ComList.begin(); iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetComponentType() == eType)
+		{
+			return true;
+		}
+	}
+
 	return false;
 }
 
 CComponent * CGameObject::AddComponent(CComponent * pComponent)
 {
-	return nullptr;
+	pComponent->SetScene(m_pScene);
+	pComponent->SetLayer(m_pLayer);
+	pComponent->SetGameObject(this);
+	pComponent->SetTransform(m_pTransform);
+	pComponent->AddRef();
+
+	m_ComList.push_back(pComponent);
+
+	return pComponent;
 }

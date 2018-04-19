@@ -162,6 +162,8 @@ typedef struct GP_DLL _tagVector4 :
 	static _tagVector4 Magenta;
 	static _tagVector4 White;
 	static _tagVector4 Black;
+	static _tagVector4 One;
+	static _tagVector4 Zero;
 }Vector4, *PVector4;
 
 GP_END

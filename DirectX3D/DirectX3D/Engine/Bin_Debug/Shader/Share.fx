@@ -1,4 +1,3 @@
-
 // 정점버퍼에서 넘어오는 정점정보를 받아오기 위한 구조체
 struct VS_INPUT_COLOR
 {
@@ -17,6 +16,21 @@ struct VS_OUTPUT_COLOR
 	// 이 레지스터에 넣어주면 우리가 다시 사용할 수 없다.
 	float4	vPos	: SV_POSITION;
 	float4	vColor	: COLOR;
+};
+
+struct VS_INPUT_COLOR_NORMAL
+{
+	float3	vPos	:	POSITION;
+	float3	vNormal	:	NORMAL;
+	float4	vColor	:	COLOR;
+};
+
+struct VS_OUTPUT_COLOR_NORMAL
+{
+	float4	vPos	:	SV_POSITION;
+	float3	vNormal	:	NORMAL;
+	float4	vColor	:	COLOR;
+	float3	vViewPos	: POSITION;
 };
 
 struct VS_INPUT_TEX
@@ -74,4 +88,26 @@ float2 ComputeUV(float2 vInputUV)
 	vUV.y = (g_iAniFrameY + vInputUV.y) / g_iAniLengthY;
 
 	return vUV;
+}
+
+cbuffer Material	:	register(b1)
+{
+	float4	g_vMtrlDiffuse;
+	float4	g_vMtrlAmbient;
+	float4	g_vMtrlSpecular;
+	float4	g_vMtrlEmissive;
+}
+
+cbuffer	Light	:	register(b2)
+{
+	float4	g_vLightDiffuse;
+	float4	g_vLightAmbient;
+	float4	g_vLightSpecular;
+	int		g_iLightType;
+	float3	g_vLightDir;
+	float3	g_vLightPos;
+	float	g_fLightRange;
+	float	g_fLightInAngle;
+	float	g_fLightOutAngle;
+	float2	g_vLightEmpty;
 }

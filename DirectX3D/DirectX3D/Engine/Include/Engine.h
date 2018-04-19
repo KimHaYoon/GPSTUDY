@@ -28,23 +28,22 @@
 // Sampler Key
 #define	SAMPLER_LINEAR	"Linear"
 
-
 // Shader Key
 #define	STANDARD_COLOR_SHADER	"StandardColorShader"
 #define	STANDARD_TEX_SHADER		"StandardTexShader"
-
 #define	COLLIDER_SHADER			"ColliderShader"
-
 #define	UI_SHADER				"UIShader"
 #define	UI_COLOR_SHADER			"UIColorShader"
 
 // RenderState Key
 #define	ALPHA_BLEND	"AlphaBlend"
-
 #define	DEPTH_DISABLE	"DepthDisable"
-
 #define	WIRE_FRAME		"WireFrame"
 #define	CULLING_NONE	"CullNone"
+
+// BufferKey
+#define MATERIAL_BUFFER "Material"
+#define LIGHT_BUFFER "Light"
 
 
 template <typename T>

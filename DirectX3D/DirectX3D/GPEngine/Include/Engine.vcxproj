@@ -160,10 +160,29 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Component\Animation\Animation2D.h" />
+    <ClInclude Include="Component\Camera\Camera.h" />
+    <ClInclude Include="Component\Collider\Collider.h" />
+    <ClInclude Include="Component\Collider\ColliderAABB.h" />
+    <ClInclude Include="Component\Collider\ColliderEllipse.h" />
+    <ClInclude Include="Component\Collider\ColliderOBB2D.h" />
+    <ClInclude Include="Component\Collider\ColliderPoint.h" />
+    <ClInclude Include="Component\Collider\ColliderRect.h" />
+    <ClInclude Include="Component\Collider\ColliderSphere.h" />
     <ClInclude Include="Component\Component.h" />
+    <ClInclude Include="Component\Light\Light.h" />
+    <ClInclude Include="Component\Light\LightDir.h" />
+    <ClInclude Include="Component\Material\Material.h" />
+    <ClInclude Include="Component\Renderer\Renderer.h" />
+    <ClInclude Include="Component\Renderer\Renderer2D.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">아니오</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Component\Script\Script.h" />
     <ClInclude Include="Component\Transform\Transform.h" />
+    <ClInclude Include="Core\ColliderManager\CollisionManager.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Core\File\PathManager.h" />
+    <ClInclude Include="Core\Input\Input.h" />
     <ClInclude Include="Core\Math\Math.h" />
     <ClInclude Include="Core\Math\Matrix.h" />
     <ClInclude Include="Core\Math\Vector2.h" />
@@ -196,10 +215,29 @@
     <ClInclude Include="Scene\SceneScript.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Component\Animation\Animation2D.cpp" />
+    <ClCompile Include="Component\Camera\Camera.cpp" />
+    <ClCompile Include="Component\Collider\Collider.cpp" />
+    <ClCompile Include="Component\Collider\ColliderAABB.cpp" />
+    <ClCompile Include="Component\Collider\ColliderEllipse.cpp" />
+    <ClCompile Include="Component\Collider\ColliderOBB2D.cpp" />
+    <ClCompile Include="Component\Collider\ColliderPoint.cpp" />
+    <ClCompile Include="Component\Collider\ColliderRect.cpp" />
+    <ClCompile Include="Component\Collider\ColliderSphere.cpp" />
     <ClCompile Include="Component\Component.cpp" />
+    <ClCompile Include="Component\Light\Light.cpp" />
+    <ClCompile Include="Component\Light\LightDir.cpp" />
+    <ClCompile Include="Component\Material\Material.cpp" />
+    <ClCompile Include="Component\Renderer\Renderer.cpp" />
+    <ClCompile Include="Component\Renderer\Renderer2D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">아니오</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Component\Script\Script.cpp" />
     <ClCompile Include="Component\Transform\Transform.cpp" />
+    <ClCompile Include="Core\ColliderManager\CollisionManager.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\File\PathManager.cpp" />
+    <ClCompile Include="Core\Input\Input.cpp" />
     <ClCompile Include="Core\Math\Matrix.cpp" />
     <ClCompile Include="Core\Math\Vector2.cpp" />
     <ClCompile Include="Core\Math\Vector3.cpp" />
@@ -246,6 +284,9 @@
     <FxCompile Include="..\Bin_Debug\Shader\Share.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="..\Bin_Debug\Shader\Standard.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">StandardColorVS</EntryPointName>

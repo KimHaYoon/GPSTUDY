@@ -7,6 +7,9 @@ class GP_DLL CGameObject :
 	public CObj
 {
 private:
+	friend class CScene;
+
+private:
 	static list<CGameObject*>	m_ObjList;
 	static list<CGameObject*>	m_FindObjectList;
 	static unordered_map<string, CGameObject*>	m_mapPrototype;
@@ -18,7 +21,7 @@ public:
 	static CGameObject* CreateObjectDontDestroy(const string& strTag, class CLayer* pLayer);
 	static CGameObject* CreatePrototypeDontDestroy(const string& strKey, class CScene* pScene);
 
-	static void ChangePrototypeScene(const string& strkey, class CScene* pScene);
+	static void ChangePrototypeScene(const string& strKey, class CScene* pScene);
 	static void AddPrototype(const string& strTag, CGameObject* pPrototype);
 	static void AddObjList(CGameObject* pObj);
 	static void ChangeLayer(const string& strTag, class CLayer* pLayer);
