@@ -16,10 +16,25 @@
     <Filter Include="01. ClientCore">
       <UniqueIdentifier>{f14e926f-4fe3-40ac-b1c5-797a03a17619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. SceneScript">
+      <UniqueIdentifier>{46b3a2a2-dd40-4bbf-86fb-dedbd30b107c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. ObjectScript">
+      <UniqueIdentifier>{91e3220e-3176-47ca-83af-aa870f919c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. ObjectScript\00. 수업">
+      <UniqueIdentifier>{5af91e53-dc47-47bb-acb5-e42eab2f5ae2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneScript\MainScene.cpp">
+      <Filter>02. SceneScript</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectScript\Player.cpp">
+      <Filter>03. ObjectScript\00. 수업</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneScript\MainScene.h">
+      <Filter>02. SceneScript</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectScript\Player.h">
+      <Filter>03. ObjectScript\00. 수업</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

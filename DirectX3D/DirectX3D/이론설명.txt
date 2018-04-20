@@ -58,4 +58,29 @@
    2. 스텐실 판정(Stencil Test)
 	- 주어진 한 픽셀을 후면 버퍼에 기록할 것인지 아닌지를 스텐실 버퍼에 근거해서 판정하는 것
 	- 스텐실 적용이 활성화 된 경우 스텐실 판정은 픽셀이 래스터화되는 과정(= 출력 병합기 단계 도중에)에서 일어남
-	 
+	
+
+
+▶ 조명처리 샘플
+	// 조명 방향을 만들어준다.
+	/*float3	vLightDir = float3(-1.f, -1.f, 0.f);
+	vLightDir = -normalize(vLightDir);
+
+	// 조명방향을 뷰공간으로 변환한다.
+	vLightDir = normalize(mul(float4(vLightDir, 0.f), g_matView).xyz);
+
+	float4	vDif = float4(0.f, 1.f, 0.f, 1.f) * g_vMtrlDiffuse *
+	max(0, dot(vLightDir, input.vNormal));
+	float4	vAmb = float4(0.f, 0.2f, 0.f, 1.f) * g_vMtrlAmbient;
+
+	// 정점에서 카메라를 향하는 벡터를 만들어준다.
+	float3	vView = -normalize(input.vViewPos);
+
+	// 반사벡터를 구해준다.
+	float3	vR = 2.f * dot(vLightDir, input.vNormal) * input.vNormal - vLightDir;
+
+	float4	vSpc = float4(0.f, 1.f, 0.f, 1.f) * g_vMtrlSpecular *
+	pow(max(0, dot(vView, vR)), 3.2f);
+
+	output.vColor = input.vColor * (vDif + vAmb) + vSpc;*/
+	//output.vColor = float4(1.f, 1.f, 0.f, 1.f);

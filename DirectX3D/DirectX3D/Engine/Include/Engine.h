@@ -30,10 +30,12 @@
 
 // Shader Key
 #define	STANDARD_COLOR_SHADER	"StandardColorShader"
+#define STANDARD_COLOR_NORMAL_SHADER "StandardColorNormalShader"
 #define	STANDARD_TEX_SHADER		"StandardTexShader"
 #define	COLLIDER_SHADER			"ColliderShader"
 #define	UI_SHADER				"UIShader"
 #define	UI_COLOR_SHADER			"UIColorShader"
+
 
 // RenderState Key
 #define	ALPHA_BLEND	"AlphaBlend"

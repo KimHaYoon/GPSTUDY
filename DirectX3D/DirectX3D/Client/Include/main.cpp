@@ -1,5 +1,8 @@
 #include "Client.h"
+#include "SceneScript/MainScene.h"
 #include "Core/Core.h"
+#include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
 
 GP_USING
 
@@ -13,6 +16,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		DESTROY_SINGLE(CCore);
 		return 0;
 	}
+
+	CScene* pScene = GET_SINGLE(CSceneManager)->GetCurrentScene();
+
+	//CMainScene* pMainScene = pScene->CreateSceneScript<CMainScene>("Main");
+
+	//SAFE_RELEASE(pMainScene);
+	SAFE_RELEASE(pScene);
 
 	int iRet = GET_SINGLE(CCore)->Run();
 

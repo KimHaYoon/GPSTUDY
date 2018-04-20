@@ -188,16 +188,16 @@ bool CScene::Init()
 	m_pMainCameraTr = m_pMainCameraObj->GetTransform();
 
 	// 전역 조명을 생성한다.
-	CLight*	pGlobalLight = CreateLight("GlobalLight", LT_DIR);
+	//CLight*	pGlobalLight = CreateLight("GlobalLight", LT_DIR);
 
-	CTransform*	pLightTr = pGlobalLight->GetTransform();
+	//CTransform*	pLightTr = pGlobalLight->GetTransform();
 
-	pLightTr->SetWorldRot(PI / 4.f, PI / 2.f, 0.f);
-	//						45			90
+	//pLightTr->SetWorldRot(PI / 4.f, PI / 2.f, 0.f);
+	////						45			90
 
-	SAFE_RELEASE(pLightTr);
+	//SAFE_RELEASE(pLightTr);
 
-	SAFE_RELEASE(pGlobalLight);
+	//SAFE_RELEASE(pGlobalLight);
 
 	return true;
 }

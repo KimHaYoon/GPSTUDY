@@ -398,7 +398,8 @@ typedef struct GP_DLL _tagLight
 	float	fRange;
 	float	fInAngle;
 	float	fOutAngle;
-	Vector2	vEmpty;
+	float	fIntensityPercent;
+	float	fEmpty;
 }LIGHT, *PLIGHT;
 
 GP_END

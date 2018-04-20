@@ -1,10 +1,13 @@
 #include "Collider.h"
 #include "../Transform/Transform.h"
+#include "../../Scene/Scene.h"
 #include "../../Resources/Mesh/Mesh.h"
 #include "../../Resources/ResourcesManager.h"
 #include "../../Rendering/Shader/Shader.h"
 #include "../../Rendering/Shader/ShaderManager.h"
-#include "../../Scene/Scene.h"
+#include "../../Core/Timer/Timer.h"
+#include "../../Core/Timer/TimerManager.h"
+#include "../../GameObject/GameObject.h"
 
 GP_USING
 
@@ -21,6 +24,7 @@ CCollider::CCollider()
 #endif // _DEBUG
 
 	m_strGroup = "Default";
+	m_vecSectionIndex.reserve(8);
 }
 
 CCollider::CCollider(const CCollider & coll) :
@@ -48,10 +52,17 @@ CCollider::~CCollider()
 	list<CCollider*>::iterator iter;
 	list<CCollider*>::iterator iterEnd = m_CollList.end();
 
+	CTimer*	pTimer = GET_SINGLE(CTimerManager)->FindTimer("MainThread");
+
 	for (iter = m_CollList.begin(); iter != iterEnd; ++iter)
 	{
+		CGameObject*	pObj = (*iter)->GetGameObject();
+		pObj->OnCollisionLeave(*iter, this, pTimer->GetDeltaTime());
+		SAFE_RELEASE(pObj);
 		(*iter)->EraseCollList(this);
 	}
+
+	SAFE_RELEASE(pTimer);
 
 #ifdef _DEBUG
 	SAFE_RELEASE(m_pMesh);
@@ -127,6 +138,59 @@ void CCollider::SetViewType(VIEW_TYPE eType)
 void CCollider::SetCollisionGroup(const string & strGroup)
 {
 	m_strGroup = strGroup;
+}
+
+void CCollider::AddSectionIndex(int iIndex)
+{
+	m_vecSectionIndex.push_back(iIndex);
+}
+
+void CCollider::ClearSectionIndex()
+{
+	m_vecSectionIndex.clear();
+}
+
+void CCollider::CheckCollisionSection(float fTime)
+{
+	list<CCollider*>::iterator	iter;
+	list<CCollider*>::iterator	iterEnd = m_CollList.end();
+
+	for (iter = m_CollList.begin(); iter != iterEnd;)
+	{
+		bool	bPair = false;
+
+		for (size_t i = 0; i < m_vecSectionIndex.size(); ++i)
+		{
+			for (size_t j = 0; j < (*iter)->m_vecSectionIndex.size(); ++j)
+			{
+				if (m_vecSectionIndex[i] == (*iter)->m_vecSectionIndex[j])
+				{
+					bPair = true;
+					break;
+				}
+			}
+
+			if (bPair)
+				break;
+		}
+
+		if (!bPair)
+		{
+			m_pGameObject->OnCollisionLeave(this, *iter, fTime);
+			CGameObject*	pDestObj = (*iter)->GetGameObject();
+
+			pDestObj->OnCollisionLeave(*iter, this, fTime);
+
+			SAFE_RELEASE(pDestObj);
+
+			(*iter)->EraseCollList(this);
+			iter = m_CollList.erase(iter);
+			iterEnd = m_CollList.end();
+		}
+
+		else
+			++iter;
+	}
 }
 
 bool CCollider::Init()

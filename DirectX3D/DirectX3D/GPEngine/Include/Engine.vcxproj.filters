@@ -270,6 +270,12 @@
     <ClInclude Include="Component\Light\LightDir.h">
       <Filter>07. Component\12. Light</Filter>
     </ClInclude>
+    <ClInclude Include="Component\Light\LightPoint.h">
+      <Filter>07. Component\12. Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Light\LightSpot.h">
+      <Filter>07. Component\12. Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp">
@@ -405,6 +411,12 @@
       <Filter>07. Component\12. Light</Filter>
     </ClCompile>
     <ClCompile Include="Component\Light\LightDir.cpp">
+      <Filter>07. Component\12. Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Light\LightPoint.cpp">
+      <Filter>07. Component\12. Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Light\LightSpot.cpp">
       <Filter>07. Component\12. Light</Filter>
     </ClCompile>
   </ItemGroup>

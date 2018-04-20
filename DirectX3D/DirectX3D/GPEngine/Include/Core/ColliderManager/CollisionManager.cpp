@@ -165,6 +165,7 @@ bool CCollisionManager::AddCollider(CGameObject * pObj)
 	{
 		CCollider*	pCollider = (CCollider*)*iter;
 		PCOLLISIONGROUP	pGroup = FindGroup(pCollider->GetCollisionGroup());
+		pCollider->ClearSectionIndex();
 
 		if (!pGroup)
 		{
@@ -192,53 +193,31 @@ bool CCollisionManager::AddCollider(CGameObject * pObj)
 		vColliderMin /= pGroup->vSize;
 		vColliderMax /= pGroup->vSize;
 
-		// 8개의 정점 정보를 구해준다.
-		Vector3	vPos[8];
-
-		vPos[0] = Vector3(vColliderMin.x, vColliderMax.y, vColliderMin.z);
-		vPos[1] = Vector3(vColliderMax.x, vColliderMax.y, vColliderMin.z);
-		vPos[2] = Vector3(vColliderMin.x, vColliderMin.y, vColliderMin.z);
-		vPos[3] = Vector3(vColliderMax.x, vColliderMin.y, vColliderMin.z);
-
-		vPos[4] = Vector3(vColliderMin.x, vColliderMax.y, vColliderMax.z);
-		vPos[5] = Vector3(vColliderMax.x, vColliderMax.y, vColliderMax.z);
-		vPos[6] = Vector3(vColliderMin.x, vColliderMin.y, vColliderMax.z);
-		vPos[7] = Vector3(vColliderMax.x, vColliderMin.y, vColliderMax.z);
-
 		vector<int>	vecIndex;
 
-		// 8개 정점정보의 인덱스를 구해준다.
-		for (int i = 0; i < 8; ++i)
+		for (int z = (int)vColliderMin.z; z <= (int)vColliderMax.z; ++z)
 		{
-			int	iIndexX = (int)vPos[i].x;
-			int	iIndexY = (int)vPos[i].y;
-			int	iIndexZ = (int)vPos[i].z;
-
-			if (iIndexX < 0 || iIndexX >= pGroup->iSectionX)
+			if (z < 0 || z >= pGroup->iSectionZ)
 				continue;
 
-			else if (iIndexY < 0 || iIndexY >= pGroup->iSectionY)
-				continue;
-
-			else if (iIndexZ < 0 || iIndexZ >= pGroup->iSectionZ)
-				continue;
-
-			int	iIndex = iIndexZ * pGroup->iSectionX * pGroup->iSectionY +
-				iIndexY * pGroup->iSectionX + iIndexX;
-
-			// 구해준 인덱스가 중복인지를 판단한다.
-			bool	bAcc = false;
-			for (size_t j = 0; j < vecIndex.size(); ++j)
+			for (int y = (int)vColliderMin.y; y <= (int)vColliderMax.y; ++y)
 			{
-				if (vecIndex[j] == iIndex)
+				if (y < 0 || y >= pGroup->iSectionY)
+					continue;
+
+				for (int x = (int)vColliderMin.x; x <= (int)vColliderMax.x; ++x)
 				{
-					bAcc = true;
-					break;
+					if (x < 0 || x >= pGroup->iSectionX)
+						continue;
+
+					int	iIndex = z * pGroup->iSectionX * pGroup->iSectionY +
+						y * pGroup->iSectionX + x;
+
+					pCollider->AddSectionIndex(iIndex);
+
+					vecIndex.push_back(iIndex);
 				}
 			}
-
-			if (!bAcc)
-				vecIndex.push_back(iIndex);
 		}
 
 		// 구해준 인덱스 섹션에 충돌체를 추가해준다.
@@ -278,6 +257,11 @@ void CCollisionManager::Collision(float fTime)
 
 		for (int i = 0; i < pGroup->iSectionMax; ++i)
 		{
+			for (int j = 0; j < pGroup->pSectionList[i]->iSize; ++j)
+			{
+				pGroup->pSectionList[i]->pArray[j]->CheckCollisionSection(fTime);
+			}
+
 			if (pGroup->pSectionList[i]->iSize < 2)
 			{
 				pGroup->pSectionList[i]->iSize = 0;

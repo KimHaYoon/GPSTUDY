@@ -172,6 +172,8 @@
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\Light\Light.h" />
     <ClInclude Include="Component\Light\LightDir.h" />
+    <ClInclude Include="Component\Light\LightPoint.h" />
+    <ClInclude Include="Component\Light\LightSpot.h" />
     <ClInclude Include="Component\Material\Material.h" />
     <ClInclude Include="Component\Renderer\Renderer.h" />
     <ClInclude Include="Component\Renderer\Renderer2D.h">
@@ -227,6 +229,8 @@
     <ClCompile Include="Component\Component.cpp" />
     <ClCompile Include="Component\Light\Light.cpp" />
     <ClCompile Include="Component\Light\LightDir.cpp" />
+    <ClCompile Include="Component\Light\LightPoint.cpp" />
+    <ClCompile Include="Component\Light\LightSpot.cpp" />
     <ClCompile Include="Component\Material\Material.cpp" />
     <ClCompile Include="Component\Renderer\Renderer.cpp" />
     <ClCompile Include="Component\Renderer\Renderer2D.cpp">

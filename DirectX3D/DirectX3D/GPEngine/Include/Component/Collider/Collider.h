@@ -20,6 +20,7 @@ protected:
 	string				m_strGroup;
 	Vector3				m_vCollMin;
 	Vector3				m_vCollMax;
+	vector<int>			m_vecSectionIndex;
 
 #ifdef _DEBUG
 	class CMesh*		m_pMesh;
@@ -42,6 +43,9 @@ public:
 	void EraseCollList(CCollider* pCollider);
 	void SetViewType(VIEW_TYPE eType);
 	void SetCollisionGroup(const string& strGroup);
+	void AddSectionIndex(int iIndex);
+	void ClearSectionIndex();
+	void CheckCollisionSection(float fTime);
 
 public:
 	virtual bool Init();

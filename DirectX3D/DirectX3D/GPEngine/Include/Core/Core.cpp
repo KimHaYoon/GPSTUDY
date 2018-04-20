@@ -1,7 +1,13 @@
 #include "Core.h"
-#include "../Device/Device.h"
+#include "Input/Input.h"
 #include "Timer/Timer.h"
+#include "File/PathManager.h"
 #include "Timer/TimerManager.h"
+#include "ColliderManager/CollisionManager.h"
+#include "../Device/Device.h"
+#include "../Scene/SceneManager.h"
+#include "../Resources/ResourcesManager.h"
+#include "../Rendering/RenderManager.h"
 
 GP_USING
 
@@ -12,7 +18,7 @@ bool CCore::m_bLoop = true;
 CCore::CCore()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	//_CrtSetBreakAlloc(1179);
+	//_CrtSetBreakAlloc(1072);
 
 #ifdef _DEBUG
 	AllocConsole();
@@ -21,8 +27,14 @@ CCore::CCore()
 
 CCore::~CCore()
 {
-	DESTROY_SINGLE(CDevice);
+	DESTROY_SINGLE(CSceneManager);
+	DESTROY_SINGLE(CRenderManager);
+	DESTROY_SINGLE(CResourcesManager);
+	DESTROY_SINGLE(CInput);
+	DESTROY_SINGLE(CCollisionManager);
 	DESTROY_SINGLE(CTimerManager);
+	DESTROY_SINGLE(CPathManager);
+	DESTROY_SINGLE(CDevice);
 #ifdef _DEBUG
 	FreeConsole();
 #endif // _DEBUG
@@ -53,8 +65,29 @@ bool CCore::Init(HINSTANCE hInst, HWND hWnd, UINT iWidth, UINT iHeight, bool bWi
 
 	if (!GET_SINGLE(CDevice)->Init(m_hWnd, iWidth, iHeight, bWindowMode))
 		return false;
+/*
+	if (!GET_SINGLE(CScheduler)->Init())
+		return false;*/
+
+	if (!GET_SINGLE(CPathManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CResourcesManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CRenderManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CInput)->Init(m_hWnd, bOnMouseRenderer))
+		return false;
 
 	if (!GET_SINGLE(CTimerManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CCollisionManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CSceneManager)->Init())
 		return false;
 
 	return true;
@@ -99,35 +132,48 @@ void CCore::Logic()
 
 	SAFE_RELEASE(pTimer);
 
+	//GET_SINGLE(CScheduler)->Update(fTime);
+
 	Input(fTime);
-	if(Update(fTime) == 1)
+	if (Update(fTime) == SC_CHANGE)
 		return;
-	if(LateUpdate(fTime) == 1)
+	if (LateUpdate(fTime) == SC_CHANGE)
 		return;
 	Collision(fTime);
 	Render(fTime);
+
 }
 
 void CCore::Input(float fTime)
 {
+	GET_SINGLE(CInput)->Update(fTime);
+	GET_SINGLE(CSceneManager)->Input(fTime);
 }
 
 int CCore::Update(float fTime)
 {
-	return 0;
+	return GET_SINGLE(CSceneManager)->Update(fTime);
 }
 
 int CCore::LateUpdate(float fTime)
 {
-	return 0;
+	return GET_SINGLE(CSceneManager)->LateUpdate(fTime);
 }
 
 void CCore::Collision(float fTime)
 {
+	GET_SINGLE(CSceneManager)->Collision(fTime);
+
+	GET_SINGLE(CCollisionManager)->Collision(fTime);
 }
 
 void CCore::Render(float fTime)
 {
+	GET_SINGLE(CDevice)->ClearTarget();
+
+	GET_SINGLE(CSceneManager)->Render(fTime);
+
+	GET_SINGLE(CDevice)->Present();
 }
 
 ATOM CCore::WindowRegisterClass(TCHAR * pClass, int iIconID)

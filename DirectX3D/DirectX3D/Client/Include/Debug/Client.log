@@ -1,15 +1,83 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   main.cpp
-d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector4.h(9): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT4'이(가) DLL 인터페이스 struct 'GP::_tagVector4'의 기본으로 사용되었습니다.
-  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(554): note: 'DirectX::XMFLOAT4' 선언을 참조하십시오.
-  d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector4.h(7): note: 'GP::_tagVector4' 선언을 참조하십시오.
-d:\gpstudy\directx3d\directx3d\engine\include\core\math\matrix.h(9): warning C4251: 'GP::_tagMatrix::mat': struct 'DirectX::XMMATRIX'에서는 union 'GP::_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
-  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(393): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
-d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector2.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT2'이(가) DLL 인터페이스 struct 'GP::_tagVector2'의 기본으로 사용되었습니다.
-  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(449): note: 'DirectX::XMFLOAT2' 선언을 참조하십시오.
-  d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector2.h(8): note: 'GP::_tagVector2' 선언을 참조하십시오.
-d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector3.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT3'이(가) DLL 인터페이스 struct 'GP::_tagVector3'의 기본으로 사용되었습니다.
-  c:\program files (x86)\windows kits\8.1\include\um\directxmath.h(500): note: 'DirectX::XMFLOAT3' 선언을 참조하십시오.
-  d:\gpstudy\directx3d\directx3d\engine\include\core\math\vector3.h(8): note: 'GP::_tagVector3' 선언을 참조하십시오.
-  Client.vcxproj -> D:\GPSTUDY\DirectX3D\DirectX3D\Client\Include\../Bin_Debug\Client_Debug.exe
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector4.h(9): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT4'이(가) DLL 인터페이스 struct 'GP::_tagVector4'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\10\include\10.0.10586.0\um\directxmath.h(565): note: 'DirectX::XMFLOAT4' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector4.h(7): note: 'GP::_tagVector4' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\matrix.h(9): warning C4251: 'GP::_tagMatrix::mat': struct 'DirectX::XMMATRIX'에서는 union 'GP::_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\10\include\10.0.10586.0\um\directxmath.h(404): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector2.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT2'이(가) DLL 인터페이스 struct 'GP::_tagVector2'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\10\include\10.0.10586.0\um\directxmath.h(460): note: 'DirectX::XMFLOAT2' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector2.h(8): note: 'GP::_tagVector2' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector3.h(10): warning C4275: DLL 인터페이스가 아닌 struct 'DirectX::XMFLOAT3'이(가) DLL 인터페이스 struct 'GP::_tagVector3'의 기본으로 사용되었습니다.
+  c:\program files (x86)\windows kits\10\include\10.0.10586.0\um\directxmath.h(511): note: 'DirectX::XMFLOAT3' 선언을 참조하십시오.
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\math\vector3.h(8): note: 'GP::_tagVector3' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\obj.h(15): warning C4251: 'GP::CObj::m_strTag': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\core\obj.h(16): warning C4251: 'GP::CObj::m_strTypeName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'GP::CObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(17): warning C4251: 'GP::CScene::m_vecLayer': class 'std::vector<GP::CLayer *,std::allocator<_Ty>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CLayer *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(17): note: 'std::vector<GP::CLayer *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CLayer *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(18): warning C4251: 'GP::CScene::m_vecSceneScript': class 'std::vector<GP::CSceneScript *,std::allocator<_Ty>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CSceneScript *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(18): note: 'std::vector<GP::CSceneScript *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CSceneScript *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(22): warning C4251: 'GP::CScene::m_mapCamera': class 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(22): note: 'std::unordered_map<std::string,GP::CGameObject *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=std::string,
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(23): warning C4251: 'GP::CScene::m_LightList': class 'std::list<GP::CGameObject *,std::allocator<_Ty>>'에서는 class 'GP::CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scene.h(23): note: 'std::list<GP::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::CGameObject *
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scenemanager.h(11): warning C4251: 'GP::_tagDontDestroyObj::strLayerTag': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 struct 'GP::_tagDontDestroyObj'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2633): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scenemanager.h(21): warning C4251: 'GP::CSceneManager::m_DontDestroyObjList': class 'std::list<GP::DONTDESTROYOBJ,std::allocator<_Ty>>'에서는 class 'GP::CSceneManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::DONTDESTROYOBJ
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scenemanager.h(21): note: 'std::list<GP::DONTDESTROYOBJ,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::DONTDESTROYOBJ
+          ]
+d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scenemanager.h(22): warning C4251: 'GP::CSceneManager::m_DontDestroyPrototypeList': class 'std::list<GP::DONTDESTROYOBJ,std::allocator<_Ty>>'에서는 class 'GP::CSceneManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=GP::DONTDESTROYOBJ
+          ]
+  d:\gpstudy\trunk\directx3d\directx3d\engine\include\scene\scenemanager.h(21): note: 'std::list<GP::DONTDESTROYOBJ,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=GP::DONTDESTROYOBJ
+          ]
+  Client.vcxproj -> D:\GPSTUDY\trunk\DirectX3D\DirectX3D\Client\Include\../Bin_Debug\Client_Debug.exe
   Client.vcxproj -> ../Bin_Debug\Client_Debug.pdb (Full PDB)

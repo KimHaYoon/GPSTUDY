@@ -69,6 +69,10 @@ bool CInput::Init(HWND hWnd, bool bOnMouseRenderer)
 	CreateKey("MoveBack", 'S');
 	CreateKey("RotInvY", 'A');
 	CreateKey('D', "RotY");
+	CreateKey("RotInvX", 'Q');
+	CreateKey("RotX", 'E');
+	CreateKey("RotInvZ", 'T');
+	CreateKey("RotZ", 'G');
 	CreateKey(VK_CONTROL, '1', "Skill1");
 	CreateKey(VK_CONTROL, "Ctrl");
 	CreateKey(VK_LBUTTON, "MouseLButton");

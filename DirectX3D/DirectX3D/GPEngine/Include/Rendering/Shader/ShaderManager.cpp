@@ -34,6 +34,14 @@ bool CShaderManager::Init()
 
 	SAFE_RELEASE(pShader);
 
+	pEntry[ST_VERTEX] = "StandardColorNormalVS";
+	pEntry[ST_PIXEL] = "StandardColorNormalPS";
+	pShader = LoadShader(STANDARD_COLOR_NORMAL_SHADER, L"Standard.fx",
+		pEntry);
+
+	SAFE_RELEASE(pShader);
+
+
 	pEntry[ST_VERTEX] = "StandardTexVS";
 	pEntry[ST_PIXEL] = "StandardTexPS";
 	pShader = LoadShader(STANDARD_TEX_SHADER, L"Standard.fx",
@@ -76,7 +84,21 @@ bool CShaderManager::Init()
 
 	CreateInputLayout("VertexTex", STANDARD_TEX_SHADER);
 
+	AddInputDesc("POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,
+		12, D3D11_INPUT_PER_VERTEX_DATA, 0);
+	AddInputDesc("NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,
+		12, D3D11_INPUT_PER_VERTEX_DATA, 0);
+	AddInputDesc("COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0,
+		16, D3D11_INPUT_PER_VERTEX_DATA, 0);
+
+	CreateInputLayout("VertexColorNormal", STANDARD_COLOR_NORMAL_SHADER);
+
+
 	CreateCBuffer("Transform", 0, sizeof(TRANSFORMCBUFFER));
+
+	CreateCBuffer("Material", 1, sizeof(MATERIAL));
+
+	CreateCBuffer("Light", 2, sizeof(LIGHT));
 
 	CreateCBuffer("Animation2D", 10, sizeof(ANIMATION2DBUFFER));
 
